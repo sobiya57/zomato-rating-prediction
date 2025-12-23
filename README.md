@@ -1,190 +1,158 @@
-🍽️ Zomato Restaurant Rating Prediction
+# 🍽️ Zomato Restaurant Rating Predictor
 
-An end-to-end Machine Learning project that predicts restaurant ratings based on services, location, cuisine, cost, and customer engagement data.
-The project includes data cleaning, feature engineering, model training, and deployment using Streamlit.
+An end-to-end Machine Learning web application that predicts restaurant ratings based on customer behavior, pricing, and restaurant characteristics using Zomato data.
 
+The project demonstrates the complete ML lifecycle — from data preprocessing and model training to deployment on Streamlit Cloud.
 
-📌 Project Overview
+---
 
-Restaurant ratings play a crucial role in customer decision-making on food delivery platforms.
-This project aims to predict restaurant ratings using historical data from Zomato, helping understand which factors influence customer ratings the most.
+## 🚀 Live Demo
 
+👉 **Streamlit App:**  
+https://zomato-rating-prediction-kftvk7nl5zorwxrhygsyvn.streamlit.app/
 
-🎯 Problem Statement
+---
 
-Given restaurant attributes such as:
+## 📌 Project Overview
 
-Online ordering availability
+Restaurant ratings play a crucial role in customer decision-making.  
+This project uses historical Zomato restaurant data to predict ratings using a supervised machine learning approach.
 
-Table booking option
+The trained model is hosted separately using **GitHub Releases** and dynamically loaded during runtime in the Streamlit app — making the deployment lightweight and scalable.
 
-Location
+---
 
-Restaurant type
+## 🧠 Machine Learning Approach
 
-Cuisines
+- **Problem Type:** Regression  
+- **Target Variable:** Restaurant Rating  
+- **Model Used:** RandomForest Regressor  
+- **Why RandomForest?**
+  - Handles non-linear relationships well
+  - Robust to outliers
+  - Provides feature importance for explainability
 
-Approximate cost for two
+---
 
-Number of votes
+## 📊 Features Used for Prediction
 
-➡️ Predict the restaurant rating (out of 5) using machine learning.
+- Online Order Availability
+- Table Booking Availability
+- Restaurant Location
+- Restaurant Type
+- Cuisines
+- Approximate Cost for Two (₹)
+- Number of Customer Votes
 
+---
 
-🧠 Machine Learning Approach
+## 📈 Model Explainability
 
-Type: Regression Problem
+The application provides **feature importance visualization** to explain:
+- Why a particular rating was predicted
+- Which features influenced the prediction the most
 
-Target Variable: rate
+This improves transparency and trust in the ML model.
 
-Model Used: Random Forest Regressor
+---
 
-Evaluation Metrics:
+## 🛠 Tech Stack
 
-Mean Absolute Error (MAE)
+- **Programming Language:** Python  
+- **Data Analysis:** Pandas, NumPy  
+- **Machine Learning:** Scikit-learn  
+- **Visualization:** Matplotlib  
+- **Web App Framework:** Streamlit  
+- **Model Hosting:** GitHub Releases  
+- **Deployment:** Streamlit Cloud  
+- **Version Control:** Git & GitHub  
 
-R² Score
+---
 
-Random Forest was chosen because it:
-
-Handles non-linear relationships well
-
-Works effectively with mixed data types
-
-Reduces overfitting compared to single models
-
+## 📂 Project Structure
 
 zomato-rating-prediction/
 │
 ├── app/
-│   └── app.py                  # Streamlit application
+│ └── app.py # Streamlit application
 │
 ├── data/
-│   └── zomato.csv               # Dataset (not pushed to GitHub)
+│ └── zomato.csv # Dataset (local training)
 │
 ├── models/
-│   └── zomato_rating_model.joblib
+│ └── zomato_rating_model.joblib # Trained model (ignored in git)
 │
 ├── notebooks/
-│   └── 01_data_cleaning.ipynb   # Data cleaning & model training
+│ └── 01_data_cleaning.ipynb # Data cleaning & model training
 │
 ├── requirements.txt
-├── README.md
-└── .gitignore
+├── .gitignore
+└── README.md
 
 
-🔍 Data Preprocessing
+---
 
-Key preprocessing steps:
+## ⚙️ Model Hosting Strategy
 
-Removed irrelevant columns
+- The trained ML model is **NOT committed to GitHub**
+- Instead, it is uploaded as a **GitHub Release asset**
+- The Streamlit app downloads the model dynamically at runtime
 
-Cleaned rating values (4.1/5, NEW, -)
+✔ Prevents large file issues  
+✔ Keeps repository clean  
+✔ Production-friendly deployment approach  
 
-Converted ratings to numeric format
+---
 
-Handled missing values
-
-Encoded categorical variables using OneHotEncoding
-
-Built a preprocessing + model pipeline
-
-
-⚙️ Tech Stack
-
-Programming Language: Python
-
-Libraries:
-
-pandas
-
-numpy
-
-scikit-learn
-
-joblib
-
-streamlit
-
-IDE: VS Code
-
-Deployment: Streamlit Cloud
-
-
-🚀 How to Run the Project Locally
+## ▶️ How to Run Locally
 
 1️⃣ Clone the repository
-
+```bash
 git clone https://github.com/sobiya57/zomato-rating-prediction.git
 cd zomato-rating-prediction
 
+2️⃣ Create and activate virtual environment
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+.venv\Scripts\activate   # Windows
 
+3️⃣ Install dependencies
 pip install -r requirements.txt
 
+4️⃣ Run Streamlit app
 streamlit run app/app.py
 
 
-🖥️ Streamlit App Features
+## 📊 Dataset
 
-User-friendly UI
-
-Accepts restaurant details as input
-
-Predicts restaurant rating instantly
-
-Displays rating clearly out of 5
+- The dataset is based on Zomato restaurant listings.
+- It contains information such as restaurant type, location, cuisines, pricing, online ordering, table booking, votes, and ratings.
+- The dataset was cleaned and preprocessed before training the machine learning model.
+- This dataset is used strictly for educational and project demonstration purposes.
 
 
-📈 Results
+## 📌 Project Highlights
 
-Achieved strong predictive performance with Random Forest
-
-Model generalizes well on unseen data
-
-Handles categorical features effectively
-
-
-📌 Future Improvements
-
-Dropdowns instead of text inputs
-
-Feature importance visualization
-
-Location-based analysis
-
-Model comparison (Linear vs Random Forest)
-
-UI enhancements
+- End-to-end Machine Learning project
+- Real-world restaurant rating prediction use case
+- Data cleaning and preprocessing using Pandas
+- Feature engineering and categorical encoding
+- RandomForest regression model for prediction
+- Feature importance visualization for explainability
+- Dynamic model loading using GitHub Releases
+- Lightweight and scalable Streamlit deployment
+- Clean project structure following industry standards
+- Resume-ready and interview-ready project
 
 
-💼 Resume Value
+## 🧾 Disclaimer
 
-This project demonstrates:
-
-Real-world data cleaning
-
-Feature engineering
-
-Model building & evaluation
-
-Pipeline usage
-
-Model deployment
-
-End-to-end ML workflow
+This project is developed for learning and demonstration purposes only.  
+It is not affiliated with, sponsored by, or endorsed by Zomato.
 
 
-🙌 Author
+## 👩‍💻 Author
 
-Sobiya Begum
-Aspiring Data Scientist | Machine Learning | Data Analysis
+**Sobiya Begum**  
+Aspiring Data Scientist | Machine Learning Enthusiast  
 
-
-⭐ Acknowledgements
-
-Dataset inspired by Zomato restaurant data for educational purposes.
-
-
-
+🔗 GitHub: https://github.com/sobiya57
