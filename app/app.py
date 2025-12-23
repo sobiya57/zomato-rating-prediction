@@ -206,7 +206,7 @@ st.subheader("📊 Why this rating?")
 show_feature_importance(model)
 
 # 👇 RIGHT PLACE (you added interpretation here)
-label, explanation = interpret_rating(prediction)
+label, explanation = interpret_rating(rating)
 st.markdown("## 🧠 Rating Interpretation")
 st.info(explanation)
 
