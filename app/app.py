@@ -197,18 +197,20 @@ if st.button("⭐ Predict Rating"):
         "votes": votes
     }])
 
+    # 🔹 Prediction
     prediction = model.predict(input_df)[0]
 
-    st.success(
-        f"⭐ **Predicted Restaurant Rating: {prediction:.1f} / 5**"
-    )
-st.subheader("📊 Why this rating?")
-show_feature_importance(model)
+    # 🔹 Show prediction
+    st.success(f"⭐ Predicted Restaurant Rating: **{prediction:.1f} / 5**")
 
-# 👇 RIGHT PLACE (you added interpretation here)
-label, explanation = interpret_rating(prediction)
-st.markdown("## 🧠 Rating Interpretation")
-st.info(explanation)
+    # 🔹 Feature importance
+    st.subheader("📊 Why this rating?")
+    show_feature_importance(model)
+
+    # 🔹 Rating interpretation (MUST BE HERE)
+    label, explanation = interpret_rating(prediction)
+    st.markdown("## 🧠 Rating Interpretation")
+    st.info(explanation)
 
 # ----------------------------------
 # Footer
