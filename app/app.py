@@ -17,7 +17,10 @@ st.set_page_config(
 )
 
 st.title("🍽️ Zomato Restaurant Rating Predictor")
-st.caption("Predict restaurant ratings using machine learning")
+st.caption(
+    "An end-to-end Machine Learning application that predicts restaurant ratings "
+    "based on customer behavior, pricing, and restaurant features."
+)
 
 # ----------------------------------
 # Paths & Model URL
@@ -165,14 +168,14 @@ votes = st.sidebar.number_input(
     step=10
 )
 
-# ----------------------------------
+# -------------------------------
 # Rating Interpretation Function
-# ----------------------------------
+# -------------------------------
 def interpret_rating(rating):
     if rating >= 4.5:
         return "🌟 Excellent", "Highly rated restaurant with outstanding customer satisfaction."
     elif rating >= 4.0:
-        return "😃 Very Good", "Customers generally love this restaurant."
+        return "😍 Very Good", "Customers generally love this restaurant."
     elif rating >= 3.5:
         return "👍 Good", "A reliable choice with positive reviews."
     elif rating >= 3.0:
@@ -212,7 +215,8 @@ st.info(explanation)
 # ----------------------------------
 st.markdown("---")
 st.caption(
-    "📌 This is a real-world machine learning project built using Zomato data "
-    "and deployed on Streamlit Cloud."
+    "📌 This is a real-world Machine Learning project built using Zomato restaurant data. "
+    "The model is trained using RandomForest Regression and deployed on Streamlit Cloud."
 )
+
 
