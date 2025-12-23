@@ -133,6 +133,21 @@ votes = st.sidebar.number_input(
 )
 
 # ----------------------------------
+# Rating Interpretation Function
+# ----------------------------------
+def interpret_rating(rating):
+    if rating >= 4.5:
+        return "🌟 Excellent", "Highly rated restaurant with outstanding customer satisfaction."
+    elif rating >= 4.0:
+        return "😃 Very Good", "Customers generally love this restaurant."
+    elif rating >= 3.5:
+        return "👍 Good", "A reliable choice with positive reviews."
+    elif rating >= 3.0:
+        return "😐 Average", "Decent experience but has room for improvement."
+    else:
+        return "⚠️ Below Average", "Lower ratings – quality or service may be inconsistent."
+
+# ----------------------------------
 # Prediction Button
 # ----------------------------------
 if st.button("⭐ Predict Rating"):
@@ -158,6 +173,9 @@ show_feature_importance(model)
 # Footer
 # ----------------------------------
 st.markdown("---")
+st.markdown("---")
+st.markdown("### 🧠 Rating Interpretation")
+st.info("This rating is influenced mainly by customer votes, pricing, and cuisine popularity.")
 st.caption(
     "📌 This is a real-world machine learning project built using Zomato data "
     "and deployed on Streamlit Cloud."
