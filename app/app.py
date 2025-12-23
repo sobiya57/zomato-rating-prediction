@@ -169,6 +169,11 @@ if st.button("⭐ Predict Rating"):
 st.subheader("📊 Why this rating?")
 show_feature_importance(model)
 
+# 👇 RIGHT PLACE (you added interpretation here)
+label, explanation = interpret_rating(prediction)
+st.markdown("## 🧠 Rating Interpretation")
+st.info(explanation)
+
 # ----------------------------------
 # Footer
 # ----------------------------------
@@ -180,3 +185,4 @@ st.caption(
     "📌 This is a real-world machine learning project built using Zomato data "
     "and deployed on Streamlit Cloud."
 )
+
