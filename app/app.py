@@ -211,9 +211,6 @@ st.info(explanation)
 # Footer
 # ----------------------------------
 st.markdown("---")
-st.markdown("---")
-st.markdown("### 🧠 Rating Interpretation")
-st.info("This rating is influenced mainly by customer votes, pricing, and cuisine popularity.")
 st.caption(
     "📌 This is a real-world machine learning project built using Zomato data "
     "and deployed on Streamlit Cloud."
