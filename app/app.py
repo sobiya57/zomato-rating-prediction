@@ -23,7 +23,60 @@ MODEL_PATH = BASE_DIR / "models" / "zomato_rating_model.joblib"
 
 @st.cache_resource
 def load_model():
-    return joblib.load(MODEL_PATH)
+    if MODEL_PATH.exists():
+        return joblib.load(MODEL_PATH)
+    else:
+        st.warning("Training model for the first time. Please wait...")
+        from sklearn.ensemble import RandomForestRegressor
+        from sklearn.pipeline import Pipeline
+        from sklearn.compose import ColumnTransformer
+        from sklearn.preprocessing import OneHotEncoder
+        import pandas as pd
+
+        df = pd.read_csv(BASE_DIR / "data" / "zomato.csv")
+
+        df = df[
+            [
+                "online_order",
+                "book_table",
+                "location",
+                "rest_type",
+                "cuisines",
+                "approx_cost(for two people)",
+                "votes",
+                "rate"
+            ]
+        ]
+
+        df["rate"] = df["rate"].replace(["NEW", "-"], None)
+        df["rate"] = df["rate"].astype(str).str.split("/").str[0].astype(float)
+        df.dropna(subset=["rate"], inplace=True)
+
+        df["online_order"] = df["online_order"].map({"Yes": 1, "No": 0})
+        df["book_table"] = df["book_table"].map({"Yes": 1, "No": 0})
+
+        X = df.drop("rate", axis=1)
+        y = df["rate"]
+
+        cat_cols = X.select_dtypes(include="object").columns
+        num_cols = X.select_dtypes(exclude="object").columns
+
+        preprocessor = ColumnTransformer(
+            [
+                ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),
+                ("num", "passthrough", num_cols),
+            ]
+        )
+
+        model = Pipeline(
+            [
+                ("preprocessor", preprocessor),
+                ("regressor", RandomForestRegressor(n_estimators=100, random_state=42)),
+            ]
+        )
+
+        model.fit(X, y)
+        return model
 
 model = load_model()
 
