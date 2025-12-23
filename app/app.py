@@ -33,6 +33,39 @@ MODEL_URL = (
     "releases/download/v1.0-model/zomato_rating_model.joblib"
 )
 
+# -----------------------------
+# Helper Functions
+# -----------------------------
+def interpret_rating(rating: float):
+    """
+    Convert numeric rating into human-friendly explanation
+    """
+    if rating >= 4.5:
+        return (
+            "🌟 Excellent Restaurant",
+            "Outstanding ratings indicate exceptional food quality, service, and customer satisfaction."
+        )
+    elif rating >= 4.0:
+        return (
+            "😄 Very Good Restaurant",
+            "Customers generally love this restaurant. Strong votes, good pricing, and popular cuisine."
+        )
+    elif rating >= 3.5:
+        return (
+            "🙂 Good Restaurant",
+            "This restaurant performs well overall with decent popularity and customer engagement."
+        )
+    elif rating >= 3.0:
+        return (
+            "😐 Average Restaurant",
+            "The restaurant has mixed reviews. Improvements in service or pricing could help."
+        )
+    else:
+        return (
+            "⚠️ Below Average Restaurant",
+            "Lower ratings suggest customer dissatisfaction or limited popularity."
+        )
+
 # ----------------------------------
 # Download Model if Needed
 # ----------------------------------
