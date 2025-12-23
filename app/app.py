@@ -3,6 +3,9 @@ import pandas as pd
 import joblib
 import requests
 from pathlib import Path
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 # ----------------------------------
 # App Config
@@ -47,6 +50,37 @@ def load_model():
 # Load Model
 # ----------------------------------
 model = load_model()
+def show_feature_importance(model):
+    try:
+        preprocessor = model.named_steps["preprocessor"]
+        regressor = model.named_steps["regressor"]
+
+        # Get feature names
+        num_features = preprocessor.transformers_[0][2]
+        cat_features = preprocessor.transformers_[1][2]
+
+        ohe = preprocessor.transformers_[1][1]
+        cat_feature_names = ohe.get_feature_names_out(cat_features)
+
+        feature_names = np.concatenate([num_features, cat_feature_names])
+
+        importances = regressor.feature_importances_
+
+        # Top 10 features
+        indices = np.argsort(importances)[-10:]
+        top_features = feature_names[indices]
+        top_importances = importances[indices]
+
+        # Plot
+        fig, ax = plt.subplots(figsize=(8, 5))
+        ax.barh(top_features, top_importances)
+        ax.set_title("Top 10 Feature Importances")
+        ax.set_xlabel("Importance Score")
+
+        st.pyplot(fig)
+
+    except Exception as e:
+        st.warning("⚠️ Feature importance not available.")
 
 # ----------------------------------
 # Sidebar Inputs
@@ -108,6 +142,8 @@ if st.button("⭐ Predict Rating"):
     st.success(
         f"⭐ **Predicted Restaurant Rating: {prediction:.1f} / 5**"
     )
+st.subheader("📊 Why this rating?")
+show_feature_importance(model)
 
 # ----------------------------------
 # Footer
