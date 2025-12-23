@@ -52,36 +52,45 @@ def load_model():
 model = load_model()
 def show_feature_importance(model):
     try:
-        preprocessor = model.named_steps["preprocessor"]
-        regressor = model.named_steps["regressor"]
+        if not hasattr(model, "named_steps"):
+            st.warning("⚠️ Feature importance not supported for this model.")
+            return
 
-        # Get feature names
-        num_features = preprocessor.transformers_[0][2]
-        cat_features = preprocessor.transformers_[1][2]
+        regressor = model.named_steps.get("regressor", None)
+        preprocessor = model.named_steps.get("preprocessor", None)
 
-        ohe = preprocessor.transformers_[1][1]
-        cat_feature_names = ohe.get_feature_names_out(cat_features)
-
-        feature_names = np.concatenate([num_features, cat_feature_names])
+        if regressor is None or not hasattr(regressor, "feature_importances_"):
+            st.warning("⚠️ Feature importance not available.")
+            return
 
         importances = regressor.feature_importances_
 
-        # Top 10 features
-        indices = np.argsort(importances)[-10:]
-        top_features = feature_names[indices]
-        top_importances = importances[indices]
+        # Get feature names after preprocessing
+        feature_names = []
+        for name, transformer, cols in preprocessor.transformers_:
+            if hasattr(transformer, "get_feature_names_out"):
+                feature_names.extend(transformer.get_feature_names_out(cols))
+            else:
+                feature_names.extend(cols)
 
-        # Plot
-        fig, ax = plt.subplots(figsize=(8, 5))
-        ax.barh(top_features, top_importances)
-        ax.set_title("Top 10 Feature Importances")
-        ax.set_xlabel("Importance Score")
+        import pandas as pd
+        import matplotlib.pyplot as plt
+
+        fi_df = pd.DataFrame({
+            "Feature": feature_names,
+            "Importance": importances
+        }).sort_values(by="Importance", ascending=False).head(15)
+
+        fig, ax = plt.subplots()
+        ax.barh(fi_df["Feature"], fi_df["Importance"])
+        ax.invert_yaxis()
+        ax.set_title("Top Feature Importance")
 
         st.pyplot(fig)
 
     except Exception as e:
         st.warning("⚠️ Feature importance not available.")
-
+        
 # ----------------------------------
 # Sidebar Inputs
 # ----------------------------------
