@@ -1,14 +1,21 @@
 # 🍽️ Zomato Restaurant Rating Predictor
 
-An end-to-end Machine Learning web application that predicts restaurant ratings based on customer behavior, pricing, and restaurant characteristics using Zomato data.
+An end-to-end Machine Learning web app that predicts restaurant ratings using customer behavior, pricing, and restaurant features.
 
-The project demonstrates the complete ML lifecycle — from data preprocessing and model training to deployment on Streamlit Cloud.
-
+Covers the full ML pipeline: data preprocessing, model training, and deployment on Streamlit Cloud.
 --- 
 ## 🚀 Live Demo
 
 👉 **Streamlit App:**  
 https://zomato-rating-prediction-kftvk7nl5zorwxrhygsyvn.streamlit.app/
+
+## ⭐ Key Features
+
+- Predict restaurant ratings instantly  
+- Interactive Streamlit UI  
+- Feature importance visualization  
+- Real-time model loading from GitHub  
+- Clean and scalable project structure  
 
 ## 📸 App Screenshots
 
@@ -25,10 +32,10 @@ https://zomato-rating-prediction-kftvk7nl5zorwxrhygsyvn.streamlit.app/
 
 ## 📌 Project Overview
 
-Restaurant ratings play a crucial role in customer decision-making.  
-This project uses historical Zomato restaurant data to predict ratings using a supervised machine learning approach.
+Restaurant ratings influence customer decisions.
+Uses historical Zomato data to predict ratings with a supervised ML model.
 
-The trained model is hosted separately using **GitHub Releases** and dynamically loaded during runtime in the Streamlit app — making the deployment lightweight and scalable.
+The model is hosted via GitHub Releases and loaded dynamically at runtime, keeping deployment lightweight and scalable.
 
 ---
 
@@ -58,7 +65,7 @@ The trained model is hosted separately using **GitHub Releases** and dynamically
 
 ## 📈 Model Explainability
 
-The application provides **feature importance visualization** to explain:
+Provides feature importance visualization to explain:
 - Why a particular rating was predicted
 - Which features influenced the prediction the most
 
@@ -82,23 +89,16 @@ This improves transparency and trust in the ML model.
 ## 📂 Project Structure
 
 zomato-rating-prediction/
-│
-├── app/
-│ └── app.py # Streamlit application
-│
-├── data/
-│ └── zomato.csv # Dataset (local training)
-│
-├── models/
-│ └── zomato_rating_model.joblib # Trained model (ignored in git)
-│
-├── notebooks/
-│ └── 01_data_cleaning.ipynb # Data cleaning & model training
-│
-├── requirements.txt
-├── .gitignore
-└── README.md
-
+│── app.py
+│── requirements.txt
+│── README.md
+│── data/
+│ └── zomato.csv
+│── models/
+│ └── model.joblib
+│── notebooks/
+│ └── data_cleaning.ipynb
+│── images/
 
 ---
 
@@ -137,20 +137,20 @@ streamlit run app/app.py
 - The dataset is based on Zomato restaurant listings.
 - It contains information such as restaurant type, location, cuisines, pricing, online ordering, table booking, votes, and ratings.
 - The dataset was cleaned and preprocessed before training the machine learning model.
-- This dataset is used strictly for educational and project demonstration purposes.
+- Used for educational and demonstration purposes only.
 
 
 ## 📌 Project Highlights
 
 - End-to-end Machine Learning project
-- Real-world restaurant rating prediction use case
+- Real-world restaurant rating prediction
 - Data cleaning and preprocessing using Pandas
 - Feature engineering and categorical encoding
-- RandomForest regression model for prediction
+- RandomForest regression model
 - Feature importance visualization for explainability
 - Dynamic model loading using GitHub Releases
 - Lightweight and scalable Streamlit deployment
-- Clean project structure following industry standards
+- Clean, industry-standard project structure
 - Resume-ready and interview-ready project
 
 
