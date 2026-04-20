@@ -14,7 +14,7 @@ The project demonstrates the complete ML lifecycle — from data preprocessing a
 ![Prediction](images/prediction.png)
 
 ### 📊 Feature Importance
-![Feature Importance](images/feature_importance.png)
+![Feature Importance](images/features_importance.png)
 
 ## 🚀 Live Demo
 
