@@ -5,6 +5,16 @@ An end-to-end Machine Learning web application that predicts restaurant ratings 
 The project demonstrates the complete ML lifecycle — from data preprocessing and model training to deployment on Streamlit Cloud.
 
 ---
+## 📸 App Screenshots
+
+### 🏠 App Interface
+![App UI](images/app_ui.png)
+
+### ⭐ Prediction Output
+![Prediction](images/prediction.png)
+
+### 📊 Feature Importance
+![Feature Importance](images/feature_importance.png)
 
 ## 🚀 Live Demo
 
