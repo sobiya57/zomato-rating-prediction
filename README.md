@@ -4,22 +4,22 @@ An end-to-end Machine Learning web application that predicts restaurant ratings 
 
 The project demonstrates the complete ML lifecycle — from data preprocessing and model training to deployment on Streamlit Cloud.
 
----
-## 📸 App Screenshots
-
-### 🏠 App Interface
-![App UI](images/app_ui.png)
-
-### ⭐ Prediction Output
-![Prediction](images/prediction.png)
-
-### 📊 Feature Importance
-![Feature Importance](images/features_importance.png)
-
+--- 
 ## 🚀 Live Demo
 
 👉 **Streamlit App:**  
 https://zomato-rating-prediction-kftvk7nl5zorwxrhygsyvn.streamlit.app/
+
+## 📸 App Screenshots
+
+### 🏠 App Interface
+<img src="images/app_ui.png" width="700"/>
+
+### ⭐ Prediction Output
+<img src="images/prediction.png" width="700"/>
+
+### 📊 Feature Importance
+<img src="images/features_importance.png" width="700"/>
 
 ---
 
